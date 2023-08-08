@@ -1,0 +1,45 @@
+<!-- weather-forecast.component.html -->
+
+<div [id]="getMainContainerId()">
+  <h2>Seleccione una ciudad:</h2>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary" (click)="changeCity('Madrid')"  [ngClass]="{'active-btn': city === 'Madrid'}">Madrid</button>
+    <button type="button" class="btn btn-primary" (click)="changeCity('Astorga')"  [ngClass]="{'active-btn': city === 'Astorga'}">Astorga</button>
+    <button type="button" class="btn btn-primary" (click)="changeCity('New York')"  [ngClass]="{'active-btn': city === 'New York'}">New York</button>
+    <button type="button" class="btn btn-primary" (click)="changeCity('Tokyo')"  [ngClass]="{'active-btn': city === 'Tokyo'}">Tokyo</button>
+  </div>
+  <br>
+  
+  <div class="row">
+    <ng-container *ngFor="let forecast of forecastData">
+      <div class="col-md-4">
+       
+        <div class="card mb-4" id="card">
+            <h5 *ngIf="(currentDate |date) == (forecast.Date | date)" class="card-title" >Today</h5>
+            <h5 *ngIf="(currentDate |date) !== (forecast.Date | date)" class="card-title" >{{forecast.Date | date:"EEEE"}}</h5>
+          <div class="card-body d-flex">
+            <div class="flex-fill mr-3">
+              <div class="d-flex align-items-center">
+                <div class="flex-fill ml-auto col-md-4">
+                  <h6 class="card-text">{{ forecast.Day.IconPhrase }}</h6>
+                  <i [ngClass]="getWeatherIconClass(forecast.Day.Icon)" [ngStyle]="{ 'font-size': '4rem' }"></i>
+                </div>
+                <div class="flex-fill ml-auto col-md-4">
+                  <p class="card-text"><i class="fa-solid fa-temperature-high"></i>{{ forecast.Temperature.Maximum.Value }} {{ forecast.Temperature.Maximum.Unit }}</p>
+                  <p class="card-text"><i class="fa-solid fa-temperature-low"></i>{{ forecast.Temperature.Minimum.Value }} {{ forecast.Temperature.Minimum.Unit }}</p>
+                </div>
+                <div class="flex-fill ml-auto col-md-4">
+                  <p><i class="fa-solid fa-wind"></i>{{forecast.Day.Wind.Speed.Value}} km/h <br></p>
+                  <i class="fa-solid fa-compass"></i>{{forecast.Day.Wind.Direction.English}}
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </ng-container>
+  </div>
+</div>
