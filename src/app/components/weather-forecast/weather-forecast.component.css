@@ -1,0 +1,47 @@
+button{
+    margin: 10px;
+}
+#card{
+    background-color: rgba(78, 65, 65, 0.425);
+    color: aliceblue;
+    /* padding:10px; */
+}
+.active-btn {
+    background-color: red; /* Cambia este color al que desees cuando el botón está activo */
+    color: white; /* Cambia este color al que desees para el texto del botón cuando está activo */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+    
+
+}
+h2{
+    color:white;
+}
+#MainContainerNight{
+    background-image: url('../../../assets/images/night1.jpg');
+    background-size: cover; /* Ajusta la imagen de fondo al tamaño del contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el contenedor */
+    min-height: 100vh; /* Establece la altura mínima del contenedor como el 100% del alto de la pantalla */
+}
+#MainContainerNigthCloudy{
+    background-image: url('../../../assets/images/nightcloudy.jpg');
+    background-size: cover; /* Ajusta la imagen de fondo al tamaño del contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el contenedor */
+    min-height: 100vh; /* Establece la altura mínima del contenedor como el 100% del alto de la pantalla */
+}
+#MainContainerDay{
+    background-image: url('../../../assets/images/day1.jpg');
+    background-size: cover; /* Ajusta la imagen de fondo al tamaño del contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el contenedor */
+    min-height: 100vh; /* Establece la altura mínima del contenedor como el 100% del alto de la pantalla */
+}
+#MainContainerSunny{
+    background-image: url('../../../assets/images/night1.jpg');
+    background-size: cover; /* Ajusta la imagen de fondo al tamaño del contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el contenedor */
+    min-height: 100vh; /* Establece la altura mínima del contenedor como el 100% del alto de la pantalla */
+}
+
