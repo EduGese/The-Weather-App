@@ -39,4 +39,15 @@ export class WeatherService {
       })
     );
   }
+  searchCities(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/locations/v1/cities/autocomplete`, {
+      params: {
+        apikey: this.apiKey,
+        q: query
+      }
+    });
+  }
+
+
+
 }

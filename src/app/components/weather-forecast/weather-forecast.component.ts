@@ -10,69 +10,16 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class WeatherForecastComponent implements OnInit {
   city: string='';
-  forecastData: any[]= []; // Esta variable almacenará los datos del tiempo para los siguientes 7 días
+  forecastData: any[]= []; // Esta variable almacenará los datos del tiempo para los siguientes 5 días
   currentDate: Date = new Date();
+  searchQuery: string = '';
+  searchResults: any[] = [];
 
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
     // Inicializa la variable city con una ciudad por defecto (por ejemplo, Madrid)
-    this.city = 'Madrid';
-    // Obtiene los datos del tiempo para la ciudad por defecto
-    this.getWeatherForecast();
-  }
-
-  getWeatherForecast() {
-    // Utiliza el servicio para hacer la solicitud a la API de AccuWeather
-    this.weatherService.getWeatherForecast(this.city).subscribe(
-      (data: any) => {
-        // Procesa los datos recibidos y guárdalos en la variable forecastData
-        this.forecastData = data.DailyForecasts;
-      },
-      (error) => {
-        console.error('Error al obtener los datos del tiempo:', error);
-      }
-    );
-  }
-  changeCity(city: string) {
-    this.city = city;
-    this.getWeatherForecast();
-  }
-  getMainContainerId(): string {
-    // const currentHour = new Date().getHours();
-    // if (currentHour >= 7 && currentHour < 21) {
-    //   return 'MainContainerDay';
-    // } else {
-    //   return 'MainContainerNight';
-    // }
-    if (this.isSunnyWeather()) {
-      return 'MainContainerSunny';
-    }else {
-      if (this.isNightCloudyWeather()) {
-        return 'MainContainerNigthCloudy';
-      } else {
-        return 'MainContainerNight';
-      }
-         
-    }
-  }
-  isSunnyWeather(): boolean {
-    if (!this.forecastData || this.forecastData.length === 0) {
-      return false;
-    }
-
-    // Suponemos que el estado del tiempo "sunny" está representado por el valor "Sunny" en forecastData
-    const todayForecast = this.forecastData[0];
-    return todayForecast.Day.IconPhrase === 'Sunny';
-  }
-  isNightCloudyWeather(): boolean {
-    if (!this.forecastData || this.forecastData.length === 0) {
-      return false;
-    }
-
-    // Suponemos que el estado del tiempo "sunny" está representado por el valor "Sunny" en forecastData
-    const todayForecast = this.forecastData[0];
-    return todayForecast.Day.IconPhrase === 'Intermittent clouds';
+    this.city = '';
   }
   getWeatherIconClass(iconCode: number): string {
     // Mapeo de códigos de iconos a clases de iconos de FontAwesome
@@ -164,5 +111,32 @@ export class WeatherForecastComponent implements OnInit {
       default:
         return 'fas fa-question-circle'; // Icono de interrogación en caso de código desconocido
     }
+  }
+  searchCities() {
+    if (this.searchQuery) {
+      this.weatherService.searchCities(this.searchQuery).subscribe(
+        (data: any) => {
+          this.searchResults = data;
+        },
+        (error) => {
+          console.error('Error al buscar ciudades:', error);
+        }
+      );
+    } else {
+      this.searchResults = [];
+    }
+  }
+  selectCity(city: any) {
+    this.searchQuery = city.LocalizedName;
+    this.searchResults = [];
+    this.weatherService.getWeatherForecast(this.searchQuery).subscribe(
+      (data: any) => {
+        // Procesa los datos recibidos y guárdalos en la variable forecastData
+        this.forecastData = data.DailyForecasts;
+      },
+      (error) => {
+        console.error('Error al obtener los datos del tiempo:', error);
+      }
+    );
   }
 }

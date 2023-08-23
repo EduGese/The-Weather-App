@@ -1,14 +1,11 @@
-<!-- weather-forecast.component.html -->
-
-<div [id]="getMainContainerId()">
+<div id="MainContainer">
   <h2>Seleccione una ciudad:</h2>
-  <div class="btn-group">
-    <button type="button" class="btn btn-primary" (click)="changeCity('Madrid')"  [ngClass]="{'active-btn': city === 'Madrid'}">Madrid</button>
-    <button type="button" class="btn btn-primary" (click)="changeCity('Astorga')"  [ngClass]="{'active-btn': city === 'Astorga'}">Astorga</button>
-    <button type="button" class="btn btn-primary" (click)="changeCity('New York')"  [ngClass]="{'active-btn': city === 'New York'}">New York</button>
-    <button type="button" class="btn btn-primary" (click)="changeCity('Tokyo')"  [ngClass]="{'active-btn': city === 'Tokyo'}">Tokyo</button>
-  </div>
-  <br>
+    <div>
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchCities()" placeholder="Buscar ciudades...">
+      <ul class="autocomplete-list">
+        <li *ngFor="let city of searchResults" (click)="selectCity(city)">{{ city.LocalizedName }}</li>
+      </ul>
+    </div>
   
   <div class="row">
     <ng-container *ngFor="let forecast of forecastData">
@@ -21,7 +18,7 @@
             <div class="flex-fill mr-3">
               <div class="d-flex align-items-center">
                 <div class="flex-fill ml-auto col-md-4">
-                  <h6 class="card-text">{{ forecast.Day.IconPhrase }}</h6>
+                 
                   <i [ngClass]="getWeatherIconClass(forecast.Day.Icon)" [ngStyle]="{ 'font-size': '4rem' }"></i>
                 </div>
                 <div class="flex-fill ml-auto col-md-4">
