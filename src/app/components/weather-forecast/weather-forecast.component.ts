@@ -1,5 +1,3 @@
-// weatherForecast.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
 
@@ -10,7 +8,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class WeatherForecastComponent implements OnInit {
   city: string='';
-  forecastData: any[]= []; // Esta variable almacenará los datos del tiempo para los siguientes 5 días
+  forecastData: any[]= [];
   currentDate: Date = new Date();
   searchQuery: string = '';
   searchResults: any[] = [];
@@ -18,13 +16,11 @@ export class WeatherForecastComponent implements OnInit {
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    // Inicializa la variable city con una ciudad por defecto (por ejemplo, Madrid)
     this.city = '';
   }
 
  
   getWeatherIconClass(iconCode: number): string {
-    // Mapeo de códigos de iconos a clases de iconos de FontAwesome
     switch (iconCode) {
       case 1:
         return 'fas fa-sun'; // Icono de sol
@@ -133,7 +129,6 @@ export class WeatherForecastComponent implements OnInit {
     this.searchResults = [];
     this.weatherService.getWeatherForecast(this.searchQuery).subscribe(
       (data: any) => {
-        // Procesa los datos recibidos y guárdalos en la variable forecastData
         this.forecastData = data.DailyForecasts;
       },
       (error) => {

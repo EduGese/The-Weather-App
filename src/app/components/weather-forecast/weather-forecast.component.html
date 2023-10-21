@@ -1,9 +1,9 @@
 <div id="MainContainer">
-  <h2>Seleccione una ciudad:</h2>
+  <h2>Seleccione una ciudad: </h2>
     <div>
-      <input type="text" [(ngModel)]="searchQuery" (input)="searchCities()" placeholder="Buscar ciudades...">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchCities()" placeholder="Buscar ciudad...">
       <ul class="autocomplete-list">
-        <li *ngFor="let city of searchResults" (click)="selectCity(city)">{{ city.LocalizedName }}</li>
+        <li *ngFor="let city of searchResults" (click)="selectCity(city)">{{ city.LocalizedName }}({{ city.province }}, {{ city.country }})</li>
       </ul>
     </div>
   
