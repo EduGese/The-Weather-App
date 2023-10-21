@@ -19,21 +19,10 @@ export class WeatherForecastComponent implements OnInit {
 
   ngOnInit(): void {
     // Inicializa la variable city con una ciudad por defecto (por ejemplo, Madrid)
-    this.city = 'Madrid';
-    // Obtiene los datos del tiempo para la ciudad por defecto
-    this.getWeatherForecast();
+    this.city = '';
   }
-  getWeatherForecast(){
-    this.weatherService.getWeatherForecast(this.city).subscribe(
-      (data: any) => {
-        // Procesa los datos recibidos y guárdalos en la variable forecastData
-        this.forecastData = data.DailyForecasts;
-      },
-      (error) => {
-        console.error('Error al obtener los datos del tiempo:', error);
-      }
-    );
-  }
+
+ 
   getWeatherIconClass(iconCode: number): string {
     // Mapeo de códigos de iconos a clases de iconos de FontAwesome
     switch (iconCode) {

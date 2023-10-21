@@ -18,6 +18,7 @@ h2{
 }
 #MainContainer{
     background-image: url('../../../assets/images/day1.jpg');
+    height: 100vw;
 }
 .autocomplete-list {
     list-style-type: none;
