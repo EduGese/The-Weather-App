@@ -144,6 +144,6 @@ export class WeatherForecastComponent implements OnInit {
   loadFakeWeatherData() {
     const fakeData = this.fakeWeatherService.getFakeWeatherData();
     this.forecastData = fakeData.forecastData;
-    // También puedes llenar otras propiedades según sea necesario
+    
   } 
 }
