@@ -1,7 +1,16 @@
 .titleContainer{
     height: 60px;
-    background-color: black;
+    background-color: #1D5D75;
     color: aliceblue;
     text-align: center;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    
+}
+img{
+    width: 90px;
+    height: auto;
 }
 

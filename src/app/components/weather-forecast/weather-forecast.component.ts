@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FakeWeatherService } from 'src/app/services/fakeService/fake-weather.service';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 
 @Component({
@@ -13,10 +14,12 @@ export class WeatherForecastComponent implements OnInit {
   searchQuery: string = '';
   searchResults: any[] = [];
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private fakeWeatherService: FakeWeatherService) { }
 
   ngOnInit(): void {
-    this.city = '';
+    this.city = 'FakeCity';
+    this.loadFakeWeatherData();
+
   }
 
  
@@ -136,4 +139,11 @@ export class WeatherForecastComponent implements OnInit {
       }
     );
   }
+
+  /* */
+  loadFakeWeatherData() {
+    const fakeData = this.fakeWeatherService.getFakeWeatherData();
+    this.forecastData = fakeData.forecastData;
+    // También puedes llenar otras propiedades según sea necesario
+  } 
 }
