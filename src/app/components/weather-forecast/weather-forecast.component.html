@@ -21,21 +21,21 @@
   
   <div class="row d-flex justify-content-center pt-3 container-fluid">
     <ng-container *ngFor="let forecast of forecastData">
-      <div class="col-md-6 mx-auto">
+      <div class="col-md-6 mx-auto  d-flex justify-content-center">
        
-        <div class="card mb-4 p-3" id="card">
+        <div class="card mb-4 p-4" id="card">
             <h5 *ngIf="(currentDate |date) == (forecast.Date | date)" class="card-title cardTitle" >Today</h5>
             <h5 *ngIf="(currentDate |date) !== (forecast.Date | date)" class="card-title cardTitle" >{{forecast.Date | date:"EEEE"}}</h5>
           <div class="card-body d-flex">
             <div class="flex-fill mr-3">
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center ">
                 <div class="flex-fill ml-auto col-md-4">
                  
                   <i [ngClass]="getWeatherIconClass(forecast.Day.Icon)" [ngStyle]="{ 'font-size': '4rem' }"></i>
                 </div>
                 <div class="flex-fill ml-auto col-md-4">
-                  <p class="card-text"><i class="fa-solid fa-temperature-high"></i> {{ forecast.Temperature.Maximum.Value }} {{ forecast.Temperature.Maximum.Unit }}</p>
-                  <p class="card-text"><i class="fa-solid fa-temperature-low"></i> {{ forecast.Temperature.Minimum.Value }} {{ forecast.Temperature.Minimum.Unit }}</p>
+                  <p class="card-text"><i class="fa-solid fa-temperature-high" style="color: #EC3609;"></i> {{ forecast.Temperature.Maximum.Value }} {{ forecast.Temperature.Maximum.Unit }}</p>
+                  <p class="card-text"><i class="fa-solid fa-temperature-low" style="color: #0977ec;"></i> {{ forecast.Temperature.Minimum.Value }} {{ forecast.Temperature.Minimum.Unit }}</p>
                 </div>
                 <div class="flex-fill ml-auto col-md-4">
                   <p><i class="fa-solid fa-wind"></i> {{forecast.Day.Wind.Speed.Value}} km/h <br></p>

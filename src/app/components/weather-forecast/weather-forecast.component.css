@@ -1,77 +1,71 @@
-button{
-    margin: 10px;
+button {
+  margin: 10px;
 }
-#card{
-    background-color: #1138465e;
-    /* background-image: url('../../../assets/images/day1.jpg');  */
-    color: aliceblue;
-    width: 80%;
- 
+#card {
+  background-color: #113846;
+  /* background-image: url('../../../assets/images/day1.jpg');  */
+  color: #f0f8ff;
+  width: 80%;
 }
-.cardTitle{
-    background-color:#11384662 ;
-    text-align: center;
-    height: 30px;
-    
+.cardTitle {
+  background-color: #f0f8ff;
+  color: #113846;
+  text-align: center;
+  height: 30px;
+  border-radius: 5px;
 }
-.city{
-    text-align: center;
-    background-color: #113846;
-    color: #F0F8FF;
-    font-family: 'Roboto Condensed', sans-serif;
+.city {
+  text-align: center;
+  background-color: #113846;
+  color: #f0f8ff;
+  font-family: "Roboto Condensed", sans-serif;
 }
-input{
-    background-color: #F0F8FF;
-    border-radius: 20px;
+input {
+  background-color: #f0f8ff;
+  border-radius: 20px;
 }
 
-#MainContainer{
-    /* background-image: url('../../../assets/images/day1.jpg'); */
-    /* background: linear-gradient(180deg, rgba(29,93,117,1) 35%, rgba(190,208,205,1) 100%); */
-    background: linear-gradient(-45deg, #113846, #113846cb, #11384686, #11384618);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    min-height: 100vh;
-    font-family: 'Roboto Condensed', sans-serif;
+#MainContainer {
+  background-image: url("../../../assets/images/forecastBackground3.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  font-family: "Roboto Condensed", sans-serif;
 }
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 .autocomplete-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
-    position: absolute; 
-    top: 100%; 
-    left:auto;
-    right: auto;
-    z-index: 1;
-    background-color: #F0F8FF;
-    border-radius: 0 0 10px 10px;
-    
-  }
-  
-  .autocomplete-list li {
-    padding: 5px;
-    cursor: pointer;
-    z-index: 3;
-    border-bottom: 1px solid #11384667;
-  }
-  
-  .autocomplete-list li:hover {
-    background-color: #113846;
-    color: #F0F8FF;
-  }
-  
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  left: auto;
+  right: auto;
+  z-index: 1;
+  background-color: #f0f8ff;
+  border-radius: 0 0 10px 10px;
+}
 
+.autocomplete-list li {
+  padding: 5px;
+  cursor: pointer;
+  z-index: 3;
+  border-bottom: 1px solid #11384667;
+}
+
+.autocomplete-list li:hover {
+  background-color: #113846;
+  color: #f0f8ff;
+}
