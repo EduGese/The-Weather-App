@@ -26,91 +26,76 @@ export class WeatherForecastComponent implements OnInit {
   getWeatherIconClass(iconCode: number): string {
     switch (iconCode) {
       case 1:
-        return 'fas fa-sun'; // Icono de sol
       case 2:
-        return 'fas fa-cloud-sun'; // Icono de nube y sol
       case 3:
-        return 'fas fa-cloud'; // Icono de nube
+        return 'bi bi-sun';
       case 4:
-        return 'fas fa-cloud-sun-rain'; // Icono de nube, sol y lluvia
+        return 'bi bi-cloud-sun';
       case 5:
-        return 'fas fa-cloud-rain'; // Icono de nube y lluvia
+        return 'bi bi-brightness-low'; 
       case 6:
-        return 'fas fa-cloud-showers-heavy'; // Icono de nube y fuertes lluvias
+        return 'bi bi-cloud-sun-fill'; 
       case 7:
-        return 'fas fa-snowflake'; // Icono de copo de nieve
       case 8:
-        return 'fas fa-cloud-sleet'; // Icono de nube y aguanieve
-      case 9:
-        return 'fas fa-wind'; // Icono de viento
-      case 10:
-        return 'fas fa-snowflake'; // Icono de nieve
+        return 'bi bi-cloudy'; 
       case 11:
-        return 'fas fa-cloud-showers-heavy'; // Icono de nube y fuertes lluvias
+        return 'bi bi-cloud-fog'; 
       case 12:
-        return 'fas fa-cloud'; // Icono de nube
+        return 'bi bi-cloud-rain'; 
       case 13:
-        return 'fas fa-cloud-moon'; // Icono de nube y luna
       case 14:
-        return 'fas fa-cloud-snow'; // Icono de nube y nieve
+        return 'fas fa-cloud-sun-rain'; 
       case 15:
-        return 'fas fa-snowflake'; // Icono de nieve
-      case 16:
-        return 'fas fa-snowflake'; // Icono de nieve
+      case 16: 
       case 17:
-        return 'fas fa-hail'; // Icono de granizo
+        return 'bi bi-cloud-lightning-rain-fill';
       case 18:
-        return 'fas fa-sleet'; // Icono de aguanieve
+        return 'bi bi-cloud-rain-heavy'; 
       case 19:
-        return 'fas fa-dust'; // Icono de polvo
       case 20:
-        return 'fas fa-fog'; // Icono de niebla
       case 21:
-        return 'fas fa-haze'; // Icono de bruma
+        return 'bi bi-cloud-hail'; 
       case 22:
-        return 'fas fa-smog'; // Icono de smog
       case 23:
-        return 'fas fa-smoke'; // Icono de humo
+        return 'bi bi-cloud-snow';
       case 24:
-        return 'fas fa-windy'; // Icono de viento
+        return 'bi bi-snow2';
       case 25:
-        return 'fas fa-snowflake'; // Icono de nieve
       case 26:
-        return 'fas fa-cloud'; // Icono de nube
       case 29:
-        return 'fas fa-cloud-moon'; // Icono de nube y luna
+        return 'bi bi-cloud-sleet';
       case 30:
-        return 'fas fa-cloud-sun'; // Icono de nube y sol
+        return 'bi bi-thermometer-sun';
       case 31:
-        return 'fas fa-moon'; // Icono de luna
+        return 'bi bi-thermometer-snow';
       case 32:
-        return 'fas fa-sun'; // Icono de sol
-      case 33:
-        return 'fas fa-moon'; // Icono de luna
+        return 'bi bi-wind'; 
+     /* case 33:
+        return 'fas fa-moon'; 
       case 34:
-        return 'fas fa-sun'; // Icono de sol
+        return 'fas fa-sun'; 
       case 35:
-        return 'fas fa-cloud-hail'; // Icono de nube y granizo
+        return 'fas fa-cloud-hail';
       case 36:
-        return 'fas fa-thermometer'; // Icono de termómetro
+        return 'fas fa-thermometer';
       case 37:
-        return 'fas fa-bolt'; // Icono de rayo
+        return 'fas fa-bolt';
       case 38:
-        return 'fas fa-bolt'; // Icono de rayo
+        return 'fas fa-bolt';
       case 39:
-        return 'fas fa-cloud-showers-heavy'; // Icono de nube y fuertes lluvias
+        return 'fas fa-cloud-showers-heavy';
       case 40:
-        return 'fas fa-cloud-rain'; // Icono de nube y lluvia
+        return 'fas fa-cloud-rain';
       case 41:
-        return 'fas fa-snowflake'; // Icono de nieve
+        return 'fas fa-snowflake';
       case 42:
-        return 'fas fa-cloud-snow'; // Icono de nube y nieve
+        return 'fas fa-cloud-snow'; 
       case 43:
-        return 'fas fa-snowflake'; // Icono de nieve
+        return 'fas fa-snowflake';
       case 44:
-        return 'fas fa-cloud'; // Icono de nube
+        return 'fas fa-cloud';*/
       default:
-        return 'fas fa-question-circle'; // Icono de interrogación en caso de código desconocido
+        return 'fas fa-question-circle'; 
     }
   }
   searchCities() {
@@ -129,6 +114,7 @@ export class WeatherForecastComponent implements OnInit {
   }
   selectCity(city: any) {
     this.searchQuery = city.LocalizedName;
+    this.city = city.LocalizedName;
     this.searchResults = [];
     this.weatherService.getWeatherForecast(this.searchQuery).subscribe(
       (data: any) => {

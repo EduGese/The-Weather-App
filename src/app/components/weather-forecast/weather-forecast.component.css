@@ -1,18 +1,18 @@
-button {
-  margin: 10px;
-}
+
 #card {
   background-color: #113846;
-  /* background-image: url('../../../assets/images/day1.jpg');  */
   color: #f0f8ff;
   width: 80%;
 }
 .cardTitle {
   background-color: #f0f8ff;
   color: #113846;
-  text-align: center;
   height: 30px;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 .city {
   text-align: center;
@@ -31,17 +31,7 @@ input {
   min-height: 100vh;
   font-family: "Roboto Condensed", sans-serif;
 }
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+
 .autocomplete-list {
   list-style-type: none;
   padding: 0;

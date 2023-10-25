@@ -17,7 +17,7 @@ export class FakeWeatherService {
         {
           Date: new Date(),
           Day: {
-            Icon: 1,
+            Icon: 12,
             Wind: {
               Speed:{
                 Value: 10
@@ -42,7 +42,7 @@ export class FakeWeatherService {
         {
           Date: new Date(),
           Day: {
-            Icon: 1,
+            Icon: 32,
             Wind: {
               Speed:{
                 Value: 10
