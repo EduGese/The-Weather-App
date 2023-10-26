@@ -1,28 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { FakeWeatherService } from 'src/app/services/fakeService/fake-weather.service';
+import { LocationService } from 'src/app/services/location/location.service';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 
 @Component({
   selector: 'app-weather-forecast',
   templateUrl: './weather-forecast.component.html',
-  styleUrls: ['./weather-forecast.component.css']
+  styleUrls: ['./weather-forecast.component.css'],
 })
 export class WeatherForecastComponent implements OnInit {
-  city: string='';
-  forecastData: any[]= [];
+  city: string = '';
+  postCode: string = '';
+  forecastData: any[] = [];
   currentDate: Date = new Date();
   searchQuery: string = '';
   searchResults: any[] = [];
+  
 
-  constructor(private weatherService: WeatherService, private fakeWeatherService: FakeWeatherService) { }
+  constructor(
+    private weatherService: WeatherService,
+    private fakeWeatherService: FakeWeatherService,
+    private ipService: LocationService
+  ) {}
 
   ngOnInit(): void {
-    this.city = 'FakeCity';
-    this.loadFakeWeatherData();
-
+    this.ipService.getLocation().subscribe(
+      (data: any) => {
+        this.city = data.city;
+        this.postCode = data.postal;
+        console.log(this.city);
+        this.weatherService.getWeatherForecast(this.city).subscribe(
+          (data: any) => {
+            this.forecastData = data.DailyForecasts;
+          },
+          (error) => {
+            console.error('Error al obtener los datos del tiempo:', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Error al obtener la información de ubicación:', error);
+      }
+    );
   }
 
- 
   getWeatherIconClass(iconCode: number): string {
     switch (iconCode) {
       case 1:
@@ -32,29 +53,29 @@ export class WeatherForecastComponent implements OnInit {
       case 4:
         return 'bi bi-cloud-sun';
       case 5:
-        return 'bi bi-brightness-low'; 
+        return 'bi bi-brightness-low';
       case 6:
-        return 'bi bi-cloud-sun-fill'; 
+        return 'bi bi-cloud-sun-fill';
       case 7:
       case 8:
-        return 'bi bi-cloudy'; 
+        return 'bi bi-cloudy';
       case 11:
-        return 'bi bi-cloud-fog'; 
+        return 'bi bi-cloud-fog';
       case 12:
-        return 'bi bi-cloud-rain'; 
+        return 'bi bi-cloud-rain';
       case 13:
       case 14:
-        return 'fas fa-cloud-sun-rain'; 
+        return 'fas fa-cloud-sun-rain';
       case 15:
-      case 16: 
+      case 16:
       case 17:
         return 'bi bi-cloud-lightning-rain-fill';
       case 18:
-        return 'bi bi-cloud-rain-heavy'; 
+        return 'bi bi-cloud-rain-heavy';
       case 19:
       case 20:
       case 21:
-        return 'bi bi-cloud-hail'; 
+        return 'bi bi-cloud-hail';
       case 22:
       case 23:
         return 'bi bi-cloud-snow';
@@ -69,8 +90,8 @@ export class WeatherForecastComponent implements OnInit {
       case 31:
         return 'bi bi-thermometer-snow';
       case 32:
-        return 'bi bi-wind'; 
-     /* case 33:
+        return 'bi bi-wind';
+      /* case 33:
         return 'fas fa-moon'; 
       case 34:
         return 'fas fa-sun'; 
@@ -95,7 +116,7 @@ export class WeatherForecastComponent implements OnInit {
       case 44:
         return 'fas fa-cloud';*/
       default:
-        return 'fas fa-question-circle'; 
+        return 'fas fa-question-circle';
     }
   }
   searchCities() {
@@ -119,6 +140,7 @@ export class WeatherForecastComponent implements OnInit {
     this.weatherService.getWeatherForecast(this.searchQuery).subscribe(
       (data: any) => {
         this.forecastData = data.DailyForecasts;
+        console.log(this.searchQuery);
       },
       (error) => {
         console.error('Error al obtener los datos del tiempo:', error);
@@ -130,6 +152,5 @@ export class WeatherForecastComponent implements OnInit {
   loadFakeWeatherData() {
     const fakeData = this.fakeWeatherService.getFakeWeatherData();
     this.forecastData = fakeData.forecastData;
-    
-  } 
+  }
 }

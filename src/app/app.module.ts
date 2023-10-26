@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FakeWeatherService } from './services/fakeService/fake-weather.service';
+import { LocationService } from './services/location/location.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { FakeWeatherService } from './services/fakeService/fake-weather.service'
     HttpClientModule,
     FormsModule,
   ],
-  providers: [WeatherService,FakeWeatherService],
+  providers: [WeatherService,FakeWeatherService, LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
