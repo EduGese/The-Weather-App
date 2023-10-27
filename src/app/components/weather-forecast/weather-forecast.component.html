@@ -1,6 +1,6 @@
 <div id="MainContainer" >
   <div class="city">
-    <h2><i class="fa-solid fa-city fa-2xs"></i>  {{city}} ({{postCode}})</h2>
+    <h2><i class="fa-solid fa-city fa-2xs"></i>  {{city}}</h2>
   </div>
   
     <div class="position-relative d-flex justify-content-center m-x-3">
@@ -21,29 +21,25 @@
     <ng-container *ngFor="let forecast of forecastData">
       <div class="col-md-6 mx-auto  d-flex justify-content-center">
        
-        <div class="card mb-4 p-4" id="card">
+        <div class="card mb-4 p-1" id="card">
             <h5 *ngIf="(currentDate |date) == (forecast.Date | date)" class="card-title cardTitle" >Today</h5>
             <h5 *ngIf="(currentDate |date) !== (forecast.Date | date)" class="card-title cardTitle" >{{forecast.Date | date:"EEEE"}}</h5>
           <div class="card-body d-flex">
             <div class="flex-fill mr-3">
-              <div class="d-flex align-items-center mx-sm-0">
-                <div class="flex-fill ml-auto ">
+              <div class="  d-flex align-items-center mx-sm-0">
+                <div class="flex-fill ml-auto p-2">
                   <i class="d-flex justify-content-start" [ngClass]="getWeatherIconClass(forecast.Day.Icon)" [ngStyle]="{ 'font-size': '4rem' }"></i><br>
                   <span class="d-flex justify-content-start">{{forecast.Day.IconPhrase}}</span>
                 </div>
-                <div class="flex-fill ml-auto ">
+                <div class="flex-fill ml-auto p-2">
                   <p class="card-text"><i class="fa-solid fa-temperature-high" style="color: #FF694D;"></i> {{ forecast.Temperature.Maximum.Value }} {{ forecast.Temperature.Maximum.Unit }}</p>
                   <p class="card-text"><i class="fa-solid fa-temperature-low" style="color: #0977ec;"></i> {{ forecast.Temperature.Minimum.Value }} {{ forecast.Temperature.Minimum.Unit }}</p>
                 </div>
-                <div class="flex-fill ml-auto ">
+                <div class="flex-fill ml-auto p-2">
                   <p><i class="fa-solid fa-wind"></i> {{forecast.Day.Wind.Speed.Value}} km/h <br></p>
                   <i class="fa-solid fa-compass"></i> {{forecast.Day.Wind.Direction.English}}
                 </div>
-              </div>
-              <!-- <div class="d-flex justify-content-center">
-                <span class="d-flex justify-content-start fw-bold">{{forecast.Day.IconPhrase}}</span>
-              </div> -->
-              
+              </div>      
             </div>
           </div>
         </div>

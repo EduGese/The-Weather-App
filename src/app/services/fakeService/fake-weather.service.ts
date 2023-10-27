@@ -8,7 +8,6 @@ export class FakeWeatherService {
   constructor() { }
 
   getFakeWeatherData(): any {
-    // Devuelve datos ficticios que coincidan con la estructura de datos reales
     return {
       cityName: 'Sample City',
       province: 'Sample Province',
@@ -17,56 +16,6 @@ export class FakeWeatherService {
         {
           Date: new Date(),
           Day: {
-            Icon: 12,
-            Wind: {
-              Speed:{
-                Value: 10
-              },
-              Direction:{
-                English: 'NW'
-              }
-
-            }
-          },
-          Temperature: {
-            Maximum: {
-              Value: 25,
-              Unit: 'Celsius'
-            },
-            Minimum: {
-              Value: 15,
-              Unit: 'Celsius'
-            }
-          },
-        },
-        {
-          Date: new Date(),
-          Day: {
-            Icon: 32,
-            Wind: {
-              Speed:{
-                Value: 10
-              },
-              Direction:{
-                English: 'NW'
-              }
-
-            }
-          },
-          Temperature: {
-            Maximum: {
-              Value: 25,
-              Unit: 'Celsius'
-            },
-            Minimum: {
-              Value: 15,
-              Unit: 'Celsius'
-            }
-          },
-        },
-        {
-          Date: new Date(),
-          Day: {
             Icon: 1,
             Wind: {
               Speed:{
@@ -92,7 +41,7 @@ export class FakeWeatherService {
         {
           Date: new Date(),
           Day: {
-            Icon: 1,
+            Icon: 4,
             Wind: {
               Speed:{
                 Value: 10
@@ -117,7 +66,57 @@ export class FakeWeatherService {
         {
           Date: new Date(),
           Day: {
-            Icon: 1,
+            Icon: 14,
+            Wind: {
+              Speed:{
+                Value: 10
+              },
+              Direction:{
+                English: 'NW'
+              }
+
+            }
+          },
+          Temperature: {
+            Maximum: {
+              Value: 25,
+              Unit: 'Celsius'
+            },
+            Minimum: {
+              Value: 15,
+              Unit: 'Celsius'
+            }
+          },
+        },
+        {
+          Date: new Date(),
+          Day: {
+            Icon: 14,
+            Wind: {
+              Speed:{
+                Value: 10
+              },
+              Direction:{
+                English: 'NW'
+              }
+
+            }
+          },
+          Temperature: {
+            Maximum: {
+              Value: 25,
+              Unit: 'Celsius'
+            },
+            Minimum: {
+              Value: 15,
+              Unit: 'Celsius'
+            }
+          },
+        },
+        {
+          Date: new Date(),
+          Day: {
+            Icon: 8,
             Wind: {
               Speed:{
                 Value: 10

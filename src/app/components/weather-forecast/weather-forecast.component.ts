@@ -10,7 +10,6 @@ import { WeatherService } from 'src/app/services/weatherService/weather.service'
 })
 export class WeatherForecastComponent implements OnInit {
   city: string = '';
-  postCode: string = '';
   forecastData: any[] = [];
   currentDate: Date = new Date();
   searchQuery: string = '';
@@ -27,8 +26,6 @@ export class WeatherForecastComponent implements OnInit {
     this.ipService.getLocation().subscribe(
       (data: any) => {
         this.city = data.city;
-        this.postCode = data.postal;
-        console.log(this.city);
         this.weatherService.getWeatherForecast(this.city).subscribe(
           (data: any) => {
             this.forecastData = data.DailyForecasts;
@@ -49,7 +46,7 @@ export class WeatherForecastComponent implements OnInit {
       case 1:
       case 2:
       case 3:
-        return 'bi bi-sun';
+        return 'bi bi-brightness-high-fill text-warning';
       case 4:
         return 'bi bi-cloud-sun';
       case 5:
@@ -124,6 +121,7 @@ export class WeatherForecastComponent implements OnInit {
       this.weatherService.searchCities(this.searchQuery).subscribe(
         (data: any) => {
           this.searchResults = data;
+          this.searchResults.unshift();
         },
         (error) => {
           console.error('Error al buscar ciudades:', error);
@@ -140,7 +138,7 @@ export class WeatherForecastComponent implements OnInit {
     this.weatherService.getWeatherForecast(this.searchQuery).subscribe(
       (data: any) => {
         this.forecastData = data.DailyForecasts;
-        console.log(this.searchQuery);
+        
       },
       (error) => {
         console.error('Error al obtener los datos del tiempo:', error);
