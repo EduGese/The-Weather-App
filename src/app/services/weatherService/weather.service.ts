@@ -7,7 +7,7 @@ import { Observable, map, switchMap } from 'rxjs';
 })
 export class WeatherService {
   private apiKey = 'frAtizx74n5pxXhxv8g0YKkak1ULmdpL'; 
-  private baseUrl = 'http://dataservice.accuweather.com';
+  private baseUrl = 'https://dataservice.accuweather.com';
 
   constructor(private http: HttpClient) { }
 

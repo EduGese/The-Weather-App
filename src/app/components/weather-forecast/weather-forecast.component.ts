@@ -14,6 +14,7 @@ export class WeatherForecastComponent implements OnInit {
   currentDate: Date = new Date();
   searchQuery: string = '';
   searchResults: any[] = [];
+  error: boolean = false;
   
 
   constructor(
@@ -32,6 +33,7 @@ export class WeatherForecastComponent implements OnInit {
           },
           (error) => {
             console.error('Error al obtener los datos del tiempo:', error);
+            this.error = true;
           }
         );
       },
