@@ -1,0 +1,15 @@
+#card {
+    background-color: #113846;
+    color: #f0f8ff;
+    width: 80%;
+  }
+  .cardTitle {
+    background-color: #f0f8ff;
+    color: #113846;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }

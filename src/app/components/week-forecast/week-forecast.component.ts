@@ -1,46 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FakeWeatherService } from 'src/app/services/fakeService/fake-weather.service';
 import { LocationService } from 'src/app/services/location/location.service';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 
 @Component({
-  selector: 'app-weather-forecast',
-  templateUrl: './weather-forecast.component.html',
-  styleUrls: ['./weather-forecast.component.css'],
+  selector: 'app-week-forecast',
+  templateUrl: './week-forecast.component.html',
+  styleUrls: ['./week-forecast.component.css']
 })
-export class WeatherForecastComponent implements OnInit {
-  city: string = '';
-  forecastData: any[] = [];
-  currentDate: Date = new Date();
-  searchQuery: string = '';
-  searchResults: any[] = [];
-  error: boolean = false;
+export class WeekForecastComponent implements OnInit {
+  //@Input ()city: string = '';
+  @Input ()forecastData: any[] = [];
+  @Input ()currentDate: Date = new Date();
+ // @Input ()searchQuery: string = '';
+ // @Input ()searchResults: any[] = [];
+  @Input ()error: boolean = false;
   
-
   constructor(
-    private weatherService: WeatherService,
-    private fakeWeatherService: FakeWeatherService,
-    private ipService: LocationService
+   
   ) {}
-
+  
   ngOnInit(): void {
-    this.ipService.getLocation().subscribe(
-      (data: any) => {
-        this.city = data.city;
-        this.weatherService.getWeatherForecast(this.city).subscribe(
-          (data: any) => {
-            this.forecastData = data.DailyForecasts;
-          },
-          (error) => {
-            console.error('Error al obtener los datos del tiempo:', error);
-            this.error = true;
-          }
-        );
-      },
-      (error) => {
-        console.error('Error al obtener la información de ubicación:', error);
-      }
-    );
+   
   }
 
   getWeatherIconClass(iconCode: number): string {
@@ -138,15 +119,16 @@ export class WeatherForecastComponent implements OnInit {
     }
     return clase;
   }
-  searchCities() {
+
+ /* searchCities() {
     if (this.searchQuery) {
       this.weatherService.searchCities(this.searchQuery).subscribe(
         (data: any) => {
-          this.searchResults = data;    
+          this.searchResults = data;
+          this.searchResults.unshift();
         },
         (error) => {
           console.error('Error al buscar ciudades:', error);
-          this.error = true;
         }
       );
     } else {
@@ -160,7 +142,6 @@ export class WeatherForecastComponent implements OnInit {
     this.weatherService.getWeatherForecast(this.searchQuery).subscribe(
       (data: any) => {
         this.forecastData = data.DailyForecasts;
-        
       },
       (error) => {
         console.error('Error al obtener los datos del tiempo:', error);
@@ -168,10 +149,5 @@ export class WeatherForecastComponent implements OnInit {
       }
     );
   }
-
-  /* */
-  loadFakeWeatherData() {
-    const fakeData = this.fakeWeatherService.getFakeWeatherData();
-    this.forecastData = fakeData.forecastData;
-  }
+*/
 }

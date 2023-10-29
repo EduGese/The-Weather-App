@@ -1,19 +1,5 @@
 
-#card {
-  background-color: #113846;
-  color: #f0f8ff;
-  width: 80%;
-}
-.cardTitle {
-  background-color: #f0f8ff;
-  color: #113846;
-  height: 30px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-}
 .city {
   text-align: center;
   background-color: #113846;
@@ -59,12 +45,4 @@ input {
   background-color: #113846;
   color: #f0f8ff;
 }
-img{
-  max-width: 100%;
-  height: auto;
-}
-.error{
-  min-height: cover;
-  color: #113846;
-  font-family: "Roboto Condensed", sans-serif;
-}
+
