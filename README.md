@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
+## Table of Contents
+- [Demo](#demo)
+- [Development server](#development-server)
+- [Code scaffolding](#code-scaffolding)
+- [Build](#build)
+- [Running unit tests](#running-unit-tests)
+- [Running end-to-end tests](#running-end-to-end-tests)
+- [Further help](#further-help)
+
+## Demo
+You can check out the live demo of this WeatherApp by clicking [here](https://weatherapp-beff9.web.app).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
