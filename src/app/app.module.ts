@@ -12,6 +12,8 @@ import { FakeWeatherService } from './services/fakeService/fake-weather.service'
 import { LocationService } from './services/location/location.service';
 import { WeekForecastComponent } from './components/week-forecast/week-forecast.component';
 import { TooManyRequestsComponent } from './components/errorPages/too-many-requests/too-many-requests.component';
+import { LocationComponent } from './components/location/location/location.component';
+import { DataService } from './services/dataService/data.service';
 
 
 @NgModule({
@@ -21,14 +23,15 @@ import { TooManyRequestsComponent } from './components/errorPages/too-many-reque
     HeaderComponent,
     FooterComponent,
     WeekForecastComponent,
-    TooManyRequestsComponent
+    TooManyRequestsComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
   ],
-  providers: [WeatherService,FakeWeatherService, LocationService],
+  providers: [WeatherService,FakeWeatherService, LocationService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

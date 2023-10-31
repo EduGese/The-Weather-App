@@ -1,0 +1,37 @@
+.city {
+    text-align: center;
+    background-color: #113846;
+    color: #f0f8ff;
+    font-family: "Roboto Condensed", sans-serif;
+  }
+  input {
+    background-color: #f0f8ff;
+    border-radius: 20px;
+  }
+  .autocomplete-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    left: auto;
+    right: auto;
+    z-index: 1;
+    background-color: #f0f8ff;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .autocomplete-list li {
+    padding: 5px;
+    cursor: pointer;
+    z-index: 3;
+    border-bottom: 1px solid #11384667;
+  }
+  
+  .autocomplete-list li:hover {
+    background-color: #113846;
+    color: #f0f8ff;
+  }

@@ -1,70 +1,11 @@
 <div id="MainContainer">
-  <div class="city">
-    <h2><i class="fa-solid fa-city fa-2xs"></i> {{city}}</h2>
-  </div>
+  
+  
+  <app-location ></app-location>
 
-  <div class="position-relative d-flex justify-content-center m-x-3">
-    <div class="mx-2 py-1">
-      <i class="fa-solid fa-magnifying-glass fa-beat-fade " style="color: #f0f8ff;"></i>
-    </div>
-    <div>
-      <input type="text" [(ngModel)]="searchQuery" (input)="searchCities()" placeholder="  Search city...">
-      <ul class="autocomplete-list">
-        <li *ngFor="let city of searchResults" (click)="selectCity(city)">{{ city.LocalizedName }}({{ city.province }},
-          {{ city.country }})</li>
-      </ul>
-    </div>
+  <app-too-many-requests></app-too-many-requests>
 
-  </div>
 
-  <app-too-many-requests [error]="error"></app-too-many-requests>
+  <app-week-forecast [currentDate]="currentDate" ></app-week-forecast>
 
-  <!-- <div class="container d-flex flex-column justify-content-center align-items-center mt-3 mb-auto" *ngIf="error=== true">
-    <div class="row error">
-      <div class="d-flex flex-column justify-content-center align-items-center col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-12 ">
-          <h1>...Oops!</h1>
-          <h3 class="text-center">You have made too many weather forecast requests today and have reached the daily limit.</h3>
-          <h3 class="text-center">I'm sorry, but I can't provide any more forecast data for today.</h3>
-      </div>
-      <div class="d-flex justify-content-center col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-12">
-        <img src="../../../assets/images/errorImg2.png" alt="ErrorImg">
-      </div>
-    </div>
-  </div> -->
-
-  <app-week-forecast [forecastData]="forecastData" [currentDate]="currentDate" [error]="error"></app-week-forecast>
-
-  <!-- <div class="row d-flex justify-content-center pt-3 container-fluid" *ngIf="error=== false">
-    <ng-container *ngFor="let forecast of forecastData">
-      <div class="col-md-6 mx-auto  d-flex justify-content-center">
-
-        <div class="card mb-4 p-1" id="card">
-          <h5 *ngIf="(currentDate |date) == (forecast.Date | date)" class="card-title cardTitle">Today</h5>
-          <h5 *ngIf="(currentDate |date) !== (forecast.Date | date)" class="card-title cardTitle">{{forecast.Date |
-            date:"EEEE"}}</h5>
-          <div class="card-body d-flex">
-            <div class="flex-fill mr-3">
-              <div class="  d-flex align-items-center mx-sm-0">
-                <div class="flex-fill ml-auto p-2">
-                  <i class="d-flex justify-content-start" [ngClass]="getWeatherIconClass(forecast.Day.Icon)"
-                    [ngStyle]="{ 'font-size': '4rem' }"></i><br>
-                  <span class="d-flex justify-content-start">{{forecast.Day.IconPhrase}}</span>
-                </div>
-                <div class="flex-fill ml-auto p-2">
-                  <p class="card-text"><i class="fa-solid fa-temperature-high" style="color: #FF694D;"></i> {{
-                    forecast.Temperature.Maximum.Value }} {{ forecast.Temperature.Maximum.Unit }}</p>
-                  <p class="card-text"><i class="fa-solid fa-temperature-low" style="color: #0977ec;"></i> {{
-                    forecast.Temperature.Minimum.Value }} {{ forecast.Temperature.Minimum.Unit }}</p>
-                </div>
-                <div class="flex-fill ml-auto p-2">
-                  <p><i class="fa-solid fa-wind fa-fade"></i> {{forecast.Day.Wind.Speed.Value}} km/h <br></p>
-                  <i class="fa-solid fa-compass fa-spin"></i> {{forecast.Day.Wind.Direction.English}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-container>
-  </div> -->
 </div>

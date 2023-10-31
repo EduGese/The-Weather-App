@@ -1,5 +1,9 @@
-
-
+#MainContainer {
+  background-image: url("../../../assets/images/forecastBackground3.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  font-family: "Roboto Condensed", sans-serif;
+}
 .city {
   text-align: center;
   background-color: #113846;
@@ -10,14 +14,6 @@ input {
   background-color: #f0f8ff;
   border-radius: 20px;
 }
-
-#MainContainer {
-  background-image: url("../../../assets/images/forecastBackground3.jpg");
-  background-size: cover;
-  min-height: 100vh;
-  font-family: "Roboto Condensed", sans-serif;
-}
-
 .autocomplete-list {
   list-style-type: none;
   padding: 0;
@@ -45,4 +41,5 @@ input {
   background-color: #113846;
   color: #f0f8ff;
 }
+
 
