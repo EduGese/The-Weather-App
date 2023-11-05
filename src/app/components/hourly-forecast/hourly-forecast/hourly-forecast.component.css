@@ -1,0 +1,51 @@
+.card {
+    width: 70px; 
+}
+.icon{
+    height: 80px;
+    font-size: xx-large;
+    color: aliceblue;
+}
+.cardContainer{
+  background-color: #113846b2;
+  border-radius: 10px; 
+  width: 90%;
+}
+
+li{
+  background-color: #1d5e7500;
+  border-color:rgba(240, 248, 255, 0);
+  color:white;
+}
+.precipitacion{
+  height: 60px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px; 
+  
+}
+::-webkit-scrollbar-thumb {
+  background: #1D5D75; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #113846; 
+}
+
+@media only screen and (max-width: 645px) {
+  .card {
+    width: 45px; 
+
+}
+.icon{
+    height: 40px;
+    font-size: xx-large;
+    color: aliceblue;
+}
+}

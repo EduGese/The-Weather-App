@@ -10,119 +10,146 @@ import { WeatherService } from 'src/app/services/weatherService/weather.service'
   styleUrls: ['./week-forecast.component.css'],
 })
 export class WeekForecastComponent implements OnInit {
-  city: string = '';
-  forecastData: any[] = [];
+  forecastDailyData: any[] = [];
   @Input() currentDate: Date = new Date();
   error: boolean = false;
+  phrase: string = '';
+  windDirection: string = '';
+  windGrades: number = 0;
 
   constructor(private dataService: DataService) {
     
   }
 
   ngOnInit(): void {
-    this.dataService.getCity().subscribe( (city: string)=>{
-      this.city = city;
-      
-    })
-    this.dataService.getForecastData().subscribe((data: any)=>{
-      this.forecastData = data;
+    this.dataService.getForecastDailyData().subscribe((data: any)=>{
+      this.forecastDailyData = data;
     })
   }
 
-  getWeatherIconClass(iconCode: number): string {
-    let clase = '';
-    switch (iconCode) {
-      case 1:
-      case 2:
-      case 3:
-        clase = 'bi bi-brightness-high-fill text-warning';
-        break;
-      case 4:
-        clase = 'bi bi-cloud-sun';
-        break;
-      case 5:
-        clase = 'bi bi-brightness-low';
-        break;
-      case 6:
-        clase = 'bi bi-cloud-sun-fill';
-        break;
-      case 7:
-      case 8:
-        clase = 'bi bi-cloudy';
-        break;
-      case 11:
-        clase = 'bi bi-cloud-fog';
-        break;
-      case 12:
-        clase = 'bi bi-cloud-rain';
-        break;
-      case 13:
-      case 14:
-        clase = 'fas fa-cloud-sun-rain';
-        break;
-      case 15:
-      case 16:
-      case 17:
-        clase = 'bi bi-cloud-lightning-rain-fill';
-        break;
-      case 18:
-        clase = 'bi bi-cloud-rain-heavy';
-        break;
-      case 19:
-      case 20:
-      case 21:
-        clase = 'bi bi-cloud-hail';
-        break;
-      case 22:
-      case 23:
-        clase = 'bi bi-cloud-snow';
-        break;
-      case 24:
-        clase = 'bi bi-snow2';
-        break;
-      case 25:
-      case 26:
-      case 29:
-        clase = 'bi bi-cloud-sleet';
-        break;
-      case 30:
-        clase = 'bi bi-thermometer-sun';
-        break;
-      case 31:
-        clase = 'bi bi-thermometer-snow';
-        break;
-      case 32:
-        clase = 'bi bi-wind';
-        break;
-      /* case 33:
-        return 'fas fa-moon'; 
-      case 34:
-        return 'fas fa-sun'; 
-      case 35:
-        return 'fas fa-cloud-hail';
-      case 36:
-        return 'fas fa-thermometer';
-      case 37:
-        return 'fas fa-bolt';
-      case 38:
-        return 'fas fa-bolt';
-      case 39:
-        return 'fas fa-cloud-showers-heavy';
-      case 40:
-        return 'fas fa-cloud-rain';
-      case 41:
-        return 'fas fa-snowflake';
-      case 42:
-        return 'fas fa-cloud-snow'; 
-      case 43:
-        return 'fas fa-snowflake';
-      case 44:
-        return 'fas fa-cloud';*/
-      default:
-        clase = 'fas fa-question-circle';
-        break;
-    }
+  getIconClass(iconCode: number): string {
+    let clase: string = '';
+    this.phrase = ''
+   
+      switch (iconCode) {
+        case 0:
+          clase = 'bi bi-brightness-high-fill text-warning';
+          this.phrase = 'Mainly clear';
+          break;
+        case 1:
+          this.phrase = 'Partly cloudy';
+          clase = 'bi bi-cloud-sun';
+          break;
+        case 2:
+          this.phrase = 'Partly cloudy';
+          clase = 'bi bi-cloud-sun';
+          break;
+        case 3:
+          this.phrase = 'Overcast';
+          clase = 'bi bi-cloud';
+          break;
+        case 45:
+          this.phrase = 'Fog';
+          clase = 'bi bi-cloud-fog';
+          break;
+        case 48:
+          this.phrase = 'Depositing rime fog';
+          clase = 'bi bi-cloud-fog';
+          break;
+        case 51:
+          this.phrase = 'Ligth drizzle';
+          clase = 'bi bi-cloud-drizzle';
+          break;
+        case 53:
+          this.phrase = 'Moderate drizzle';
+          clase = 'bi bi-cloud-drizzle';
+          break;
+        case 55:
+          this.phrase = 'Dense drizzle';
+          clase = 'bi bi-cloud-drizzle';
+          break;
+        case 56:
+          this.phrase = 'Ligth drizzle';
+          clase = 'bi bi-cloud-drizzle';
+          break;
+        case 57:
+          this.phrase = 'Dense drizzle';
+          clase = 'bi bi-cloud-drizzle';
+          break;
+        case 61:
+          this.phrase = 'Slight rain';
+          clase = 'bi bi-cloud-rain';
+          break;
+        case 63:
+          this.phrase = 'Moderate rain';
+          clase = 'bi bi-cloud-rain';
+          break;
+        case 65:
+          this.phrase = 'Heavy rain'
+          clase = 'bi bi-cloud-rain-heavy';
+          break;
+        case 66:
+          this.phrase = 'Light freezing Rain';
+          clase = 'bi bi-cloud-sleet';
+          break;
+        case 67:
+          this.phrase = 'Heavy freezing Rain';
+          clase = 'bi bi-cloud-sleet';
+          break;
+        case 71:
+          this.phrase = 'Slight snow';
+          clase = 'bi bi-cloud-snow';
+          break;
+        case 73:
+          this.phrase = 'Moderate snow';
+          clase = 'bi bi-cloud-snow';
+          break;
+        case 75:
+          this.phrase = 'Heavy snow';
+          clase = 'bi bi-cloud-snow';
+          break;
+        case 77:
+          this.phrase = 'Snow grains';
+          clase = 'bi bi-cloud-sleet';
+          break;
+        case 80:
+          this.phrase = 'Slight showers';
+          clase = 'bi bi-cloud-rain-heavy';
+          break;
+        case 81:
+          this.phrase = 'Moderate showers';
+          clase = 'bi bi-cloud-rain-heavy';
+          break;
+        case 82:
+          this.phrase = 'Violent showers';
+          clase = 'bi bi-cloud-rain-heavy';
+          break;
+        case 85:
+          this.phrase = 'Slight snow showers';
+          clase = 'bi bi-cloud-snow-fill';
+          break;
+        case 86:
+          this.phrase = 'Heavy snow showers';
+          clase = 'bi bi-cloud-snow-fill';
+          break;
+        case 95:
+          this.phrase = 'Thunderstorm';
+          clase = 'bi bi-lightning';
+          break;
+        case 96:
+          this.phrase = 'Thunderstorm with hail';
+          clase = 'bi bi-cloud-lightning-rain';
+          break;
+        case 99:
+          this.phrase = 'Thunderstorm with hail';
+          clase = 'bi bi-cloud-lightning-rain';
+          break;
+        default:
+          clase = 'fas fa-question-circle';
+          break;
+      }
     return clase;
   }
+
 
 }

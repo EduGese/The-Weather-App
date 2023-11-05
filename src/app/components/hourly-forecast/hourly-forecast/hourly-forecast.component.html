@@ -1,0 +1,15 @@
+     <div class="container d-flex flex-row flex-nowrap overflow-auto mx-auto mt-3  p-1  cardContainer">
+        <ng-container *ngFor="let data of forecastHourlyData">
+            <ul class="list-group list-group-flush">
+                <li class="card card-block mx-2 d-flex justify-content-center align-items-center p-1" *ngIf="((data.time | date :'HH:mm') == (timeNow | date :'HH:00'))">Now</li>
+                <li class="card card-block mx-2 d-flex justify-content-center align-items-center p-1" *ngIf="((data.time | date :'HH:mm') !== (timeNow | date :'HH:00'))">{{data.time | date:'HH:mm' }}</li>
+                <li  class="card card-block mx-2 d-flex justify-content-center align-items-center icon"><i [ngClass]="getIconClass(data.weathercode, data.isDay)"></i></li>
+                <li  class="card card-block mx-2 d-flex justify-content-center align-items-center">{{data.temperature | number:'1.0-0'}}º</li>
+                <li  class="card card-block mx-2 d-flex justify-content-center align-items-center "><i *ngIf="data.precipitation<=35" class="bi bi-droplet">{{data.precipitation}}%</i></li>
+                <li  class="card card-block mx-2 d-flex justify-content-center align-items-center "><i *ngIf="data.precipitation>35 && data.precipitation<=75" class="bi bi-droplet-half">{{data.precipitation}}%</i></li>
+                <li  class="card card-block mx-2 d-flex justify-content-center align-items-center "><i *ngIf="data.precipitation>=76" class="bi bi-droplet-fill">{{data.precipitation}}%</i></li>
+            </ul>
+        </ng-container>
+    </div>
+
+    

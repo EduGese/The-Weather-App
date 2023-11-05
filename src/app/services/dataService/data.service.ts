@@ -5,18 +5,27 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  private forecastData = new Subject<any[]>();
+  private forecastHourlyData = new Subject<any[]>();
+  private forecastDailyData = new Subject<any[]>();
   private city = new Subject<string>();
   private error = new Subject<boolean>();
+  
 
   constructor() {}
 
-  getForecastData(): any {
-    return this.forecastData.asObservable();
+  getForecastHourlyData(): any {
+    return this.forecastHourlyData.asObservable();
   }
 
-  setForecastData(data: any[]): void {
-    this.forecastData.next(data);
+  setForecastHourlyData(data: any[]): void {
+    this.forecastHourlyData.next(data);
+  }
+  getForecastDailyData(): any {
+    return this.forecastDailyData.asObservable();
+  }
+
+  setForecastDailyData(data: any[]): void {
+    this.forecastDailyData.next(data);
   }
 
   

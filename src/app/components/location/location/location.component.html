@@ -9,8 +9,8 @@
     <div>
       <input type="text" [(ngModel)]="searchQuery" (input)="searchCities()" placeholder="  Search city...">
       <ul class="autocomplete-list">
-        <li *ngFor="let city of searchResults" (click)="selectCity(city)">{{ city.LocalizedName }}({{ city.province }},
-          {{ city.country }})</li>
+          <li *ngFor="let location of searchResults" (click)="selectCity(location)">{{ location.city}}  ({{ location.state}},
+            {{ location.country }})</li>
       </ul>
     </div>
   </div>

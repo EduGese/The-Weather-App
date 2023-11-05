@@ -14,6 +14,7 @@ import { WeekForecastComponent } from './components/week-forecast/week-forecast.
 import { TooManyRequestsComponent } from './components/errorPages/too-many-requests/too-many-requests.component';
 import { LocationComponent } from './components/location/location/location.component';
 import { DataService } from './services/dataService/data.service';
+import { HourlyForecastComponent } from './components/hourly-forecast/hourly-forecast/hourly-forecast.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DataService } from './services/dataService/data.service';
     FooterComponent,
     WeekForecastComponent,
     TooManyRequestsComponent,
-    LocationComponent
+    LocationComponent,
+    HourlyForecastComponent
   ],
   imports: [
     BrowserModule,

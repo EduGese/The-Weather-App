@@ -35,3 +35,20 @@
     background-color: #113846;
     color: #f0f8ff;
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px; 
+    
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1D5D75; 
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #113846; 
+  }
