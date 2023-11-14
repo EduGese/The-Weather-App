@@ -1,18 +1,8 @@
-
-#card {
-  background-color: #113846;
-  color: #f0f8ff;
-  width: 80%;
-}
-.cardTitle {
-  background-color: #f0f8ff;
-  color: #113846;
-  height: 30px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+#MainContainer {
+  background-image: url("../../../assets/images/forecastBackground3.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  font-family: "Roboto Condensed", sans-serif;
 }
 .city {
   text-align: center;
@@ -24,14 +14,6 @@ input {
   background-color: #f0f8ff;
   border-radius: 20px;
 }
-
-#MainContainer {
-  background-image: url("../../../assets/images/forecastBackground3.jpg");
-  background-size: cover;
-  min-height: 100vh;
-  font-family: "Roboto Condensed", sans-serif;
-}
-
 .autocomplete-list {
   list-style-type: none;
   padding: 0;
@@ -59,12 +41,5 @@ input {
   background-color: #113846;
   color: #f0f8ff;
 }
-img{
-  max-width: 100%;
-  height: auto;
-}
-.error{
-  min-height: cover;
-  color: #113846;
-  font-family: "Roboto Condensed", sans-serif;
-}
+
+
