@@ -1,5 +1,6 @@
 <div class="city">
-    <h2><i class="fa-solid fa-city fa-2xs"></i> {{city}}</h2>
+    <h3 *ngIf="currentCity !==''"><i class="bi bi-geo-alt-fill fa-2xs"></i> {{currentCity}}<span class="fs-5"> (current location)</span></h3>
+    <h3 *ngIf="currentCity==''"><i class="fa-solid fa-city fa-2xs" ></i> {{city}} <span class="fs-5">({{state}}, {{country}})</span></h3>
   </div>
 
   <div class="position-relative d-flex justify-content-center m-x-3">
@@ -7,7 +8,7 @@
       <i class="fa-solid fa-magnifying-glass fa-beat-fade " style="color: #f0f8ff;"></i>
     </div>
     <div>
-      <input type="text" [(ngModel)]="searchQuery" (input)="searchCities()" placeholder="  Search city...">
+      <input type="text"  [(ngModel)]="searchQuery" (input)="searchCities()" placeholder="  Search city...">
       <ul class="autocomplete-list">
           <li *ngFor="let location of searchResults" (click)="selectCity(location)">{{ location.city}}  ({{ location.state}},
             {{ location.country }})</li>

@@ -15,7 +15,6 @@ export class HourlyForecastComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getForecastHourlyData().subscribe((data: any) => {
       this.forecastHourlyData = data;
-      console.log('HourlyData-->'+ this.forecastHourlyData);
     });
   }
 
@@ -75,7 +74,7 @@ export class HourlyForecastComponent implements OnInit {
           clase = 'bi bi-cloud-snow-fill';
           break;
         case 95:
-          clase = 'bi bi-lightning';
+          clase = 'bi bi-lightning text-warning';
           break;
         case 96:
         case 99:

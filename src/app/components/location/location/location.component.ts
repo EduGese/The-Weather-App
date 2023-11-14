@@ -11,6 +11,9 @@ import { WeatherService } from 'src/app/services/weatherService/weather.service'
 })
 export class LocationComponent implements OnInit {
   city: string = '';
+  state: string = '';
+  country: string = '';
+  currentCity: string = '';
   
   forecastHourlyData: any[] = [];
   forecastDailyData: any[] = [];
@@ -30,7 +33,7 @@ export class LocationComponent implements OnInit {
   ngOnInit(): void {
     this.ipService.getLocation().subscribe(
       (data: any) => {
-        this.city = data.city;
+        this.currentCity = data.city ;
         this.getHourlyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
         this.getDailyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
       },
@@ -57,7 +60,10 @@ export class LocationComponent implements OnInit {
   }
   selectCity(selectedLocation: any) {
     
-    this.city = `${selectedLocation.city} (${selectedLocation.state},${selectedLocation.country})`;
+    this.city = selectedLocation.city;
+    this.state = selectedLocation.state;
+    this.country = selectedLocation.country;
+    this.currentCity = '';
     this.lat = selectedLocation.lat;
     this.lon = selectedLocation.lon;
     this.searchResults = [];

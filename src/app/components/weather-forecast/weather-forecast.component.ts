@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FakeWeatherService } from 'src/app/services/fakeService/fake-weather.service';
 import { LocationService } from 'src/app/services/location/location.service';
-import { WeatherService } from 'src/app/services/weatherService/weather.service';
+
 
 @Component({
   selector: 'app-weather-forecast',
@@ -18,8 +17,6 @@ export class WeatherForecastComponent implements OnInit {
   
 
   constructor(
-    private weatherService: WeatherService,
-    private fakeWeatherService: FakeWeatherService,
     private ipService: LocationService
   ) {}
 

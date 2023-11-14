@@ -134,7 +134,7 @@ export class WeekForecastComponent implements OnInit {
           break;
         case 95:
           this.phrase = 'Thunderstorm';
-          clase = 'bi bi-lightning';
+          clase = 'bi bi-lightning text-warning';
           break;
         case 96:
           this.phrase = 'Thunderstorm with hail';
