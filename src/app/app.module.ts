@@ -15,7 +15,11 @@ import { LocationComponent } from './components/location/location/location.compo
 import { DataService } from './services/dataService/data.service';
 import { HourlyForecastComponent } from './components/hourly-forecast/hourly-forecast/hourly-forecast.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 import { DayCardComponent } from './components/day-card/day-card.component';
 
 
@@ -37,7 +41,9 @@ import { DayCardComponent } from './components/day-card/day-card.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonModule,
+    MatIconModule
    
   ],
   providers: [WeatherService,FakeWeatherService, LocationService, DataService],

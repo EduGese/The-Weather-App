@@ -1,8 +1,8 @@
 import { DataService } from './../../../services/dataService/data.service';
 import { Component, OnInit } from '@angular/core';
-
 import { LocationService } from 'src/app/services/location/location.service';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
+
 
 @Component({
   selector: 'app-location',
@@ -31,16 +31,7 @@ export class LocationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ipService.getLocation().subscribe(
-      (data: any) => {
-        this.currentCity = data.city ;
-        this.getHourlyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
-        this.getDailyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
-      },
-      (error) => {
-        console.error('Error al obtener la información de ubicación:', error);
-      }
-    );
+    this.getWeatherCurrentLocation();
   }
 
   searchCities() {
@@ -128,6 +119,18 @@ export class LocationComponent implements OnInit {
           this.error = true;
           this.dataService.setError(this.error);
         }
+    );
+  }
+  getWeatherCurrentLocation(){
+    this.ipService.getLocation().subscribe(
+      (data: any) => {
+        this.currentCity = data.city ;
+        this.getHourlyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
+        this.getDailyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
+      },
+      (error) => {
+        console.error('Error al obtener la información de ubicación:', error);
+      }
     );
   }
 }

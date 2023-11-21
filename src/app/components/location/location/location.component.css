@@ -8,6 +8,12 @@
     background-color: #f0f8ff;
     border-radius: 20px;
   }
+  button{
+    width: fit-content;
+    height: fit-content;
+    color: #F0F8FF;
+    background-color: #113846;
+  }
   .autocomplete-list {
     list-style-type: none;
     padding: 0;
