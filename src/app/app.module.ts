@@ -14,6 +14,8 @@ import { TooManyRequestsComponent } from './components/errorPages/too-many-reque
 import { LocationComponent } from './components/location/location/location.component';
 import { DataService } from './services/dataService/data.service';
 import { HourlyForecastComponent } from './components/hourly-forecast/hourly-forecast/hourly-forecast.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -32,6 +34,9 @@ import { HourlyForecastComponent } from './components/hourly-forecast/hourly-for
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatExpansionModule
+   
   ],
   providers: [WeatherService,FakeWeatherService, LocationService, DataService],
   bootstrap: [AppComponent]
