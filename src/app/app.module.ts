@@ -16,6 +16,7 @@ import { DataService } from './services/dataService/data.service';
 import { HourlyForecastComponent } from './components/hourly-forecast/hourly-forecast/hourly-forecast.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DayCardComponent } from './components/day-card/day-card.component';
 
 
 
@@ -28,7 +29,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     WeekForecastComponent,
     TooManyRequestsComponent,
     LocationComponent,
-    HourlyForecastComponent
+    HourlyForecastComponent,
+    DayCardComponent
   ],
   imports: [
     BrowserModule,
