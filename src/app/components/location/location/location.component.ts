@@ -39,6 +39,7 @@ export class LocationComponent implements OnInit {
       this.ipService.findCities(this.searchQuery).subscribe(
         (data: any) => {
           this.searchResults = data.results;
+          console.log(data.results);
         },
         (error) => {
           console.error('Error al buscar ciudades:', error);
