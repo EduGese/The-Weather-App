@@ -13,14 +13,32 @@ export class LocationService {
   private baseUrlGeoapify = environment.baseUrlGeoapify;
   private ipInfoToken = environment.ipInfoToken;
   private ipInfoURL = environment.ipInfoURL;
+
+
+city: string = '';
+
   constructor(private http: HttpClient) {}
 
-  getLocation(){
+  getCity(): Observable<string>{
     return this.http.get(this.ipInfoURL, {
       params:{
         token : this.ipInfoToken
       }
-    });
+    })
+    .pipe(
+      map((response:any)=>response.city)
+    );
+  }
+  getLocation(): Promise<any>{
+    return new Promise((resolve, reject) => {
+      
+      navigator.geolocation.getCurrentPosition(resp => {
+              resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
+          },
+          err => {
+              reject(err);
+        });
+  });
   }
 
   findCities(query: string):Observable<any[]>{

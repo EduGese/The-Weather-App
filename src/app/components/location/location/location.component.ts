@@ -1,5 +1,6 @@
 import { DataService } from './../../../services/dataService/data.service';
 import { Component, OnInit } from '@angular/core';
+import { throwError } from 'rxjs';
 import { LocationService } from 'src/app/services/location/location.service';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 
@@ -122,16 +123,40 @@ export class LocationComponent implements OnInit {
         }
     );
   }
+  // getWeatherCurrentLocation(){
+  //   this.ipService.getLocation().subscribe(
+  //     (data: any) => {
+  //       this.currentCity = data.city ;
+  //       this.getHourlyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
+  //       this.getDailyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
+  //     },
+  //     (error) => {
+  //       console.error('Error al obtener la información de ubicación:', error);
+  //     }
+  //   );
+  // }
+
   getWeatherCurrentLocation(){
-    this.ipService.getLocation().subscribe(
-      (data: any) => {
-        this.currentCity = data.city ;
-        this.getHourlyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
-        this.getDailyWeather(data.loc.split(',')[0],data.loc.split(',')[1]);
-      },
-      (error) => {
-        console.error('Error al obtener la información de ubicación:', error);
-      }
-    );
+    this.ipService.getLocation()
+    .then(data => {
+      
+      this.getHourlyWeather(data.lat,data.lng);
+      this.getDailyWeather(data.lat,data.lng);
+      this.ipService.getCity().subscribe(
+        (city:string)=>{
+          this.currentCity  = city;
+        },
+        (error)=>{
+          throw new Error(error);
+        }
+      )
+  })
+  .catch(()=>{
+    alert('Location permission denied. App will show Madrid as current location by default')
+    this.getHourlyWeather(40.4165,-3.70256);
+      this.getDailyWeather(40.4165,-3.70256);
+      this.currentCity = 'Madrid' ;
+  })
+  ;
   }
 }
