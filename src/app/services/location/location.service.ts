@@ -2,6 +2,8 @@ import { Observable, map } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { LocationSearch } from 'src/app/models/locationSearch';
+import { Position } from 'src/app/models/position';
 
 
 @Injectable({
@@ -29,7 +31,7 @@ city: string = '';
       map((response:any)=>response.city)
     );
   }
-  getLocation(): Promise<any>{
+  getLocation(): Promise<Position>{
     return new Promise((resolve, reject) => {
       
       navigator.geolocation.getCurrentPosition(resp => {
@@ -41,8 +43,8 @@ city: string = '';
   });
   }
 
-  findCities(query: string):Observable<any[]>{
-    return this.http.get<any[]>(`${this.baseUrlGeoapify}/v1/geocode/autocomplete`, {
+  findCities(query: string):Observable<LocationSearch[]>{
+    return this.http.get<LocationSearch[]>(`${this.baseUrlGeoapify}/v1/geocode/autocomplete`, {
       params:{
         apiKey : this.apiKeyGeoapify,
         text: query,
@@ -51,5 +53,8 @@ city: string = '';
         format : 'json'
       }
     })
+    .pipe(
+      map((response:any)=> response.results)
+    )
   }
 }

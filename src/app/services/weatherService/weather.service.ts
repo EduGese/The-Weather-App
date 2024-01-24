@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map, switchMap } from 'rxjs';
+import { DailyData } from 'src/app/models/dailyData';
+import { HourlyData } from 'src/app/models/hourlyData';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getOpenMeteoWeatherDailyForecast(lat: number, lon: number): Observable<any> {
-    return this.http.get<any[]>(`${this.baseUrlMeteo}/v1/forecast`, {
+  getOpenMeteoWeatherDailyForecast(lat: number, lon: number): Observable<DailyData> {
+    return this.http.get<DailyData>(`${this.baseUrlMeteo}/v1/forecast`, {
       params:{
         latitude : lat,
         longitude : lon,
@@ -26,15 +28,13 @@ export class WeatherService {
       }
     })
   }
-  getOpenMeteoWeatherHourlyForecast(lat: number, lon: number): Observable<any> {
-    return this.http.get<any[]>(`${this.baseUrlMeteo}/v1/forecast`, {
+  getOpenMeteoWeatherHourlyForecast(lat: number, lon: number): Observable<HourlyData> {
+    return this.http.get<HourlyData>(`${this.baseUrlMeteo}/v1/forecast`, {
       params:{
         latitude : lat,
         longitude : lon,
         hourly : 'temperature_2m,weathercode,windspeed_10m,winddirection_10m,is_day,precipitation_probability',
         timezone : 'Europe/Berlin'
-
-
       }
     })
   }

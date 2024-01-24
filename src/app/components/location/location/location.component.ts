@@ -1,6 +1,9 @@
 import { DataService } from './../../../services/dataService/data.service';
 import { Component, OnInit } from '@angular/core';
 import { throwError } from 'rxjs';
+import { DailyData } from 'src/app/models/dailyData';
+import { HourlyData } from 'src/app/models/hourlyData';
+import { LocationSearch } from 'src/app/models/locationSearch';
 import { LocationService } from 'src/app/services/location/location.service';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 
@@ -16,10 +19,10 @@ export class LocationComponent implements OnInit {
   country: string = '';
   currentCity: string = '';
   
-  forecastHourlyData: any[] = [];
-  forecastDailyData: any[] = [];
+  forecastHourlyData: HourlyData[] = [];
+  forecastDailyData: DailyData[] = [];
   searchQuery: string = '';
-  searchResults: any[] = [];
+  searchResults: LocationSearch[] = [];
   error: boolean = false;
   lat: number = 0 ;
   lon: number = 0;
@@ -38,9 +41,9 @@ export class LocationComponent implements OnInit {
   searchCities() {
     if (this.searchQuery) { 
       this.ipService.findCities(this.searchQuery).subscribe(
-        (data: any) => {
-          this.searchResults = data.results;
-          console.log(data.results);
+        (data: LocationSearch[]) => {
+          this.searchResults = data;
+          console.log('ciudades', data);
         },
         (error) => {
           console.error('Error al buscar ciudades:', error);
@@ -51,7 +54,7 @@ export class LocationComponent implements OnInit {
       this.searchResults = [];
     }
   }
-  selectCity(selectedLocation: any) {
+  selectCity(selectedLocation: LocationSearch) {
     
     this.city = selectedLocation.city;
     this.state = selectedLocation.state;
@@ -74,9 +77,9 @@ export class LocationComponent implements OnInit {
     this.weatherService
       .getOpenMeteoWeatherHourlyForecast(lat, lon)
       .subscribe(
-        (data: any) => {
+        (data: HourlyData) => {
         const filteredData = data.hourly.time
-          .map((time: any, index: any) => ({
+          .map((time: string, index: number) => ({
             time: time,
             isDay: data.hourly.is_day[index],
             temperature: data.hourly.temperature_2m[index],
@@ -100,9 +103,9 @@ export class LocationComponent implements OnInit {
     this.weatherService.
     getOpenMeteoWeatherDailyForecast(lat,lon).
     subscribe(
-      (data:any)=>{
+      (data:DailyData)=>{
         const dailyData = data.daily.time
-        .map((daily:any, index:any)=>({
+        .map((daily:string, index:number)=>({
           daily: daily,
           time: data.daily.time[index],
           weathercode: data.daily.weathercode[index],
@@ -137,9 +140,28 @@ export class LocationComponent implements OnInit {
   // }
 
   getWeatherCurrentLocation(){
-    this.ipService.getLocation()
+  //   this.ipService.getLocation()
+  //   .then(data => {
+  //     console.log(data);
+  //     this.getHourlyWeather(data.lat,data.lng);
+  //     this.getDailyWeather(data.lat,data.lng);
+  //     this.ipService.getCity().subscribe(
+  //       (city:string)=>{
+  //         this.currentCity  = city;
+  //       },
+  //       (error)=>{
+  //         throw new Error(error);
+  //       }
+  //     )
+  // })
+  // .catch(()=>{
+  //   alert('Location permission denied. App will show Madrid as current location by default')
+  //   this.getHourlyWeather(40.4165,-3.70256);
+  //     this.getDailyWeather(40.4165,-3.70256);
+  //     this.currentCity = 'Madrid' ;
+  // });
+  this.ipService.getLocation()
     .then(data => {
-      
       this.getHourlyWeather(data.lat,data.lng);
       this.getDailyWeather(data.lat,data.lng);
       this.ipService.getCity().subscribe(
@@ -156,7 +178,6 @@ export class LocationComponent implements OnInit {
     this.getHourlyWeather(40.4165,-3.70256);
       this.getDailyWeather(40.4165,-3.70256);
       this.currentCity = 'Madrid' ;
-  })
-  ;
+  });
   }
 }
