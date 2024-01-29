@@ -1,26 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataService } from 'src/app/services/dataService/data.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-week-forecast',
   templateUrl: './week-forecast.component.html',
   styleUrls: ['./week-forecast.component.css'],
 })
-export class WeekForecastComponent implements OnInit {
-  forecastDailyData: any[] = [];
+export class WeekForecastComponent {
+  @Input() forecastDailyData: any[] = [];
  
 
-  constructor(private dataService: DataService) {
-    
-  }
-
-  ngOnInit(): void {
-    this.dataService.getForecastDailyData().subscribe((data: any)=>{
-      this.forecastDailyData = data;
-    })
-  }
-
-  
-
+  constructor() {}
 
 }
