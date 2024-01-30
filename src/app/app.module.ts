@@ -9,7 +9,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FakeWeatherService } from './services/fakeService/fake-weather.service';
 import { LocationService } from './services/location/location.service';
-import { WeekForecastComponent } from './components/week-forecast/week-forecast.component';
 import { TooManyRequestsComponent } from './components/errorPages/too-many-requests/too-many-requests.component';
 import { LocationComponent } from './components/location/location/location.component';
 import { DataService } from './services/dataService/data.service';
@@ -30,7 +29,6 @@ import { DayCardComponent } from './components/day-card/day-card.component';
     WeatherForecastComponent,
     HeaderComponent,
     FooterComponent,
-    WeekForecastComponent,
     TooManyRequestsComponent,
     LocationComponent,
     HourlyForecastComponent,

@@ -5,6 +5,7 @@ import { LocationSearch } from 'src/app/models/locationSearch';
 import { LocationService } from 'src/app/services/location/location.service';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 import { HourlyForecastComponent } from '../hourly-forecast/hourly-forecast/hourly-forecast.component';
+import { DayCardComponent } from '../day-card/day-card.component';
 
 @Component({
   selector: 'app-weather-forecast',
@@ -20,6 +21,7 @@ export class WeatherForecastComponent implements OnInit {
   state: string = '';
   country: string = '';
   @ViewChild(HourlyForecastComponent) hourlyForecastComponenthijo!: HourlyForecastComponent;
+  @ViewChild(DayCardComponent) dayCardComponent!: DayCardComponent;
 
   constructor(
     private ipService: LocationService,
@@ -131,69 +133,81 @@ export class WeatherForecastComponent implements OnInit {
     let isDay = iconInfo.isDay;
     let weatherCode = iconInfo.weatherCode;
     let iconClass = '';
-
-    console.log('isDay:', isDay);
-    console.log('weathercode:', weatherCode);
-    
+    let phrase = '';
     if (isDay == 1) {
       switch (weatherCode) {
         case 0:
           iconClass = 'bi bi-brightness-high-fill text-warning';
+          phrase = 'Mainly clear';
           break;
         case 1:
         case 2:
           iconClass = 'bi bi-cloud-sun';
+          phrase =  'Partly cloudy';
           break;
         case 3:
           iconClass = 'bi bi-cloud';
+          phrase = 'Overcast';
           break;
         case 45:
         case 48:
           iconClass = 'bi bi-cloud-fog';
+          phrase =  'Fog';
           break;
         case 51:
         case 53:
         case 55:
           iconClass = 'bi bi-cloud-drizzle';
+          phrase = 'Drizzle';
           break;
         case 56:
         case 57:
           iconClass = 'bi bi-cloud-drizzle';
+          phrase = 'Drizzle';
           break;
         case 61:
         case 63:
           iconClass = 'bi bi-cloud-rain';
+          phrase = 'Rain'
           break;
         case 65:
           iconClass = 'bi bi-cloud-rain-heavy';
+          phrase = 'Heavy rain'
           break;
         case 66:
         case 67:
           iconClass = 'bi bi-cloud-sleet';
+          phrase = 'Freezing Rain'
           break;
         case 71:
         case 73:
         case 75:
           iconClass = 'bi bi-cloud-snow';
+          phrase = 'Snow';
           break;
         case 77:
           iconClass = 'bi bi-cloud-sleet';
+          phrase = 'Snow';
           break;
         case 80:
         case 81:
         case 82:
           iconClass = 'bi bi-cloud-rain-heavy';
+          phrase = 'Heavy rain';
           break;
         case 85:
         case 86:
           iconClass = 'bi bi-cloud-snow-fill';
+          phrase = 'Heavy snow showers';
           break;
         case 95:
           iconClass = 'bi bi-lightning text-warning';
+          phrase = 'Thunderstorm';  
           break;
         case 96:
         case 99:
           iconClass = 'bi bi-cloud-lightning-rain';
+          phrase = 'Thunderstorm with hail';
           break;
         default:
           iconClass = 'fas fa-question-circle';
@@ -265,6 +279,13 @@ export class WeatherForecastComponent implements OnInit {
       }
       
     }
+  if(iconInfo.component == 'hourly-component'){
     this.hourlyForecastComponenthijo.setIconClass(iconClass);
   }
+  if(iconInfo.component == 'day-component'){
+    this.dayCardComponent.setIconClass(iconClass);
+    this.dayCardComponent.setPhrase(phrase);
+  }
+}
+
 }

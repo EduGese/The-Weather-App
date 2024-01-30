@@ -1,5 +1,5 @@
-
-    <div class="card mb-4 p-1" id="card">
+<ng-container *ngFor="let forecast of forecastDailyData">
+    <div class="card mb-4 p-1 col-md-6 mx-auto d-flex justify-content-center" id="card">
         <h5 *ngIf="(forecast.time | date: 'MM/dd/YY') == (currentDate | date: 'MM/dd/YY')" class="card-title cardTitle">
             Today</h5>
         <h5 *ngIf="(forecast.time | date: 'MM/dd/YY') !== (currentDate | date: 'MM/dd/YY')"
@@ -9,7 +9,7 @@
             <div class="flex-fill mr-3">
                 <div class="  d-flex align-items-center mx-sm-0">
                     <div class="flex-fill ml-auto p-2">
-                        <i class="d-flex justify-content-start" [ngClass]=" getIconClass(forecast.weathercode)"
+                        <i class="d-flex justify-content-start" [ngClass]=" getIconClass(forecast.weathercode, 1)"
                             [ngStyle]="{ 'font-size': '4rem' }"></i><br>
                         <span class="d-flex justify-content-start">{{phrase}}</span>
                     </div>
@@ -27,3 +27,4 @@
             </div>
         </div>
     </div>
+</ng-container>

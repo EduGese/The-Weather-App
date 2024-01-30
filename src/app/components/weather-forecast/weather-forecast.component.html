@@ -1,23 +1,18 @@
 <div id="MainContainer">
 
-  <app-location 
-  (searchQueryEvent) = searchCities($event) 
-  (selectedLocationEvent) = selectCity($event)
-  (weatherCurrentLocation) =  getWeatherCurrentLocation()
-  [searchResults] = "searchResults"
-  [currentCity] = "currentCity"
-  [city] = "city"
-  [state] = "state"
-  [country] = "country"
-  ></app-location>
+  <app-location (searchQueryEvent)=searchCities($event) (selectedLocationEvent)=selectCity($event)
+    (weatherCurrentLocation)=getWeatherCurrentLocation() [searchResults]="searchResults" [currentCity]="currentCity"
+    [city]="city" [state]="state" [country]="country"></app-location>
 
   <app-too-many-requests></app-too-many-requests>
 
-  <app-hourly-forecast 
-  [forecastHourlyData] = "forecastHourlyData"
-  (codesEvent) = getIconClass($event)
-  ></app-hourly-forecast>
+  <app-hourly-forecast [forecastHourlyData]="forecastHourlyData"
+    (codesEvent)=getIconClass($event)></app-hourly-forecast>
 
-  <app-week-forecast [forecastDailyData] = "forecastDailyData"></app-week-forecast>
+  <div class="container-fluid">
+    <app-day-card class="row d-flex justify-content-center pt-3 container-fluid mx-auto"
+     [forecastDailyData]="forecastDailyData"
+      (codesEventDay)=getIconClass($event)></app-day-card>
+  </div>
 
 </div>

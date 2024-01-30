@@ -11,7 +11,6 @@ export class HourlyForecastComponent {
   timeNow = new Date();
   iconClass: string = '';
  
-  constructor() {}
  
   setIconClass(iconClass: string) {
     this.iconClass = iconClass;
@@ -19,9 +18,10 @@ export class HourlyForecastComponent {
   getIconClass(weatherCode: number, isDay: number){
     const iconInfo = {
       weatherCode: weatherCode,
-      isDay: isDay
+      isDay: isDay,
+      component: 'hourly-component'
     }
-     this.codesEvent.emit(iconInfo);
-     return this.iconClass;
+    this.codesEvent.emit(iconInfo);
+    return this.iconClass;
   }
 }
