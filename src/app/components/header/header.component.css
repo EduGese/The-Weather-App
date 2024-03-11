@@ -6,11 +6,15 @@
     display: flex;
     justify-content:flex-start;
     align-items: center;
-    font-family: 'Roboto Condensed', sans-serif;
     
 }
 img{
     width: 90px;
     height: auto;
+}
+h1{
+    font-family: 'Poppins';
+    margin: 0;
+    color: #FD9F01;
 }
 

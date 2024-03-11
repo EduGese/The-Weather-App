@@ -1,7 +1,7 @@
 <div class="city">
-  <h3 *ngIf="currentCity !==''"><i class="bi bi-geo-alt-fill fa-xs"></i> {{currentCity}}</h3>
-  <h3 *ngIf="currentCity==''"><i class="fa-solid fa-city fa-xs"></i> {{city}} ({{state}},
-      {{country}})</h3>
+  <h2 *ngIf="currentCity !==''"><i class="bi bi-geo-alt-fill fa-xs"></i> {{currentCity}}</h2>
+  <h2 *ngIf="currentCity==''"><i class="fa-solid fa-city fa-xs"></i> {{city}} ({{state}},
+      {{country}})</h2>
 </div>
 
 <div class="position-relative d-flex justify-content-center py-1">
@@ -16,8 +16,8 @@
     </ul>
   </div>
   <div class="mx-2">
-    <button mat-fab (click)="getWeatherCurrentLocation()">
-      <mat-icon>location_on</mat-icon>
+    <button mat-mini-fab (click)="getWeatherCurrentLocation()">
+      <mat-icon>my_location</mat-icon>
     </button>
   </div>
 </div>

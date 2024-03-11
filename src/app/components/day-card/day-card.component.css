@@ -1,7 +1,7 @@
 #card {
     background-color: #113846b2;
     color: #f0f8ff;
-    width: 70%; 
+    margin: 0 10px 0 10px;
   }
   .cardTitle {
     background-color: #f0f8ff;
@@ -12,4 +12,8 @@
     justify-content: center;
     align-items: center;
   
+  }
+
+  .phrase, h3, p{
+    font-family: 'Poppins';
   }
