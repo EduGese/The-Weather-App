@@ -39,10 +39,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-## Screenshots
-
-When API has receibed too many requests in a day:
-
-![image](https://github.com/EduGese/weather-app/assets/122921699/6a929a6c-3197-4f60-9fad-c877fba8cdb5)
 
 
