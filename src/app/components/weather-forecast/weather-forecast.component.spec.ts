@@ -4,10 +4,10 @@ import { WeatherForecastComponent } from './weather-forecast.component';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationComponent } from '../location/location/location.component';
-import { TooManyRequestsComponent } from '../errorPages/too-many-requests/too-many-requests.component';
 import { HourlyForecastComponent } from '../hourly-forecast/hourly-forecast/hourly-forecast.component';
-import { WeekForecastComponent } from '../week-forecast/week-forecast.component';
 import { FormsModule } from '@angular/forms';
+import { DayCardComponent } from '../day-card/day-card.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('WeatherForecastComponent', () => {
   let component: WeatherForecastComponent;
@@ -15,10 +15,9 @@ describe('WeatherForecastComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WeatherForecastComponent, LocationComponent,
-         TooManyRequestsComponent, HourlyForecastComponent, WeekForecastComponent],
+      declarations: [WeatherForecastComponent, LocationComponent, HourlyForecastComponent, DayCardComponent],
       providers: [WeatherService],
-      imports : [HttpClientModule, FormsModule]
+      imports : [HttpClientModule, FormsModule, MatIconModule]
       
     });
     fixture = TestBed.createComponent(WeatherForecastComponent);

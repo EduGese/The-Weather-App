@@ -4,7 +4,6 @@
     (weatherCurrentLocation)=getWeatherCurrentLocation() [searchResults]="searchResults" [currentCity]="currentCity"
     [city]="city" [state]="state" [country]="country"></app-location>
 
-  <app-too-many-requests></app-too-many-requests>
 
   <app-hourly-forecast [forecastHourlyData]="forecastHourlyData"
     (codesEvent)=getIconClass($event)></app-hourly-forecast>

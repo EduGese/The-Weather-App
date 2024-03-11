@@ -20,10 +20,8 @@ export class LocationComponent {
 
   searchCities() {
     this.searchQueryEvent.emit(this.searchQuery);
-    console.log('ciudades', this.searchResults);
   }
   selectCity(selectedLocation: any) {
-    console.log('selectedLocation', selectedLocation);
     this.selectedLocationEvent.emit(selectedLocation);
     this.searchQuery = '';
  

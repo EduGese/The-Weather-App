@@ -34,14 +34,14 @@ export class WeatherForecastComponent implements OnInit {
   searchCities(word: string) {
     console.log('letras:', word);
     if (word) {
-      this.ipService.findCities(word).subscribe(
-        (data: LocationSearch[]) => {
+      this.ipService.findCities(word).subscribe({
+        next: (data: LocationSearch[]) => {
           this.searchResults = data;
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al buscar ciudades:', error);
         }
-      );
+    });
     } else {
       this.searchResults = [];
     }
@@ -61,8 +61,8 @@ export class WeatherForecastComponent implements OnInit {
     futureTime.setHours(futureTime.getHours() + 24);
     const futureTimeISO = futureTime.toISOString();
 
-    this.weatherService.getOpenMeteoWeatherHourlyForecast(lat, lon).subscribe(
-      (data: HourlyData) => {
+    this.weatherService.getOpenMeteoWeatherHourlyForecast(lat, lon).subscribe({
+      next: (data: HourlyData) => {
         this.forecastHourlyData = data.hourly.time
           .map((time: string, index: number) => ({
             time: time,
@@ -77,15 +77,15 @@ export class WeatherForecastComponent implements OnInit {
             (data: any) => data.time >= now && data.time <= futureTimeISO
           );
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al obtener los datos del tiempo:', error);
       }
-    );
+  });
   }
 
   getDailyWeather(lat: number, lon: number) {
-    this.weatherService.getOpenMeteoWeatherDailyForecast(lat, lon).subscribe(
-      (data: DailyData) => {
+    this.weatherService.getOpenMeteoWeatherDailyForecast(lat, lon).subscribe({
+      next: (data: DailyData) => {
         this.forecastDailyData = data.daily.time.map(
           (daily: string, index: number) => ({
             daily: daily,
@@ -100,10 +100,10 @@ export class WeatherForecastComponent implements OnInit {
           })
         );
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al obtener los datos del tiempo:', error);
       }
-    );
+  });
   }
   getWeatherCurrentLocation() {
     this.ipService
@@ -111,14 +111,14 @@ export class WeatherForecastComponent implements OnInit {
       .then((data) => {
         this.getHourlyWeather(data.lat, data.lng);
         this.getDailyWeather(data.lat, data.lng);
-        this.ipService.getCity().subscribe(
-          (city: string) => {
+        this.ipService.getCity().subscribe({
+          next: (city: string) => {
             this.currentCity = city;
           },
-          (error) => {
+          error: (error) => {
             throw new Error(error);
           }
-        );
+      });
       })
       .catch(() => {
         alert(

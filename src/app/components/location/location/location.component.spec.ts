@@ -4,6 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LocationComponent } from './location.component';
 import { WeatherService } from 'src/app/services/weatherService/weather.service';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('LocationComponent', () => {
   let component: LocationComponent;
@@ -13,7 +14,7 @@ describe('LocationComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LocationComponent],
       providers : [WeatherService],
-      imports : [HttpClientModule, FormsModule]
+      imports : [HttpClientModule, FormsModule, MatIconModule]
     });
     fixture = TestBed.createComponent(LocationComponent);
     component = fixture.componentInstance;

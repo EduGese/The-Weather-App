@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, map, switchMap } from 'rxjs';
+import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { DailyData } from 'src/app/models/dailyData';
 import { HourlyData } from 'src/app/models/hourlyData';
 
@@ -8,8 +8,6 @@ import { HourlyData } from 'src/app/models/hourlyData';
   providedIn: 'root'
 })
 export class WeatherService {
-  private apiKey = 'frAtizx74n5pxXhxv8g0YKkak1ULmdpL'; 
-  private baseUrl = 'https://dataservice.accuweather.com';
 
   
   private baseUrlMeteo = 'https://api.open-meteo.com';
