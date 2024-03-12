@@ -1,4 +1,4 @@
-# WeatherApp
+# The Weather
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [Screenshots](#screenshots)
 
 ## Demo
-You can check out the live demo of this WeatherApp by clicking [here](https://weatherapp-beff9.web.app).
+You can check out the live demo by clicking [here](https://weatherapp-beff9.web.app).
 
 ## Development server
 
