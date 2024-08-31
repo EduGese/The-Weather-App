@@ -15,6 +15,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Demo
 You can check out the live demo by clicking [here](https://weatherapp-beff9.web.app).
 
+
+https://github.com/user-attachments/assets/1a07efd3-a8c5-4741-8e36-13943954d3fe
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
